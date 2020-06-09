@@ -7,7 +7,7 @@ from snippets.models import Snippet
 class SnippetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Snippet
-        fields = ['title', 'code', 'language', 'style', ]
+        fields = ['id', 'title', 'code', 'language', 'style', ]
 
 
 class UserSerializer(serializers.ModelSerializer):
