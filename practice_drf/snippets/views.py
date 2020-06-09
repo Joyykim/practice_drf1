@@ -7,6 +7,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, status, filters
 from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import CursorPagination, LimitOffsetPagination, PageNumberPagination
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
@@ -48,6 +49,8 @@ class SnippetViewSet(viewsets.ModelViewSet):
     serializer_class = SnippetSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['code', ]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
     #
     # def list(self, request):
     #     queryset = Snippet.objects.all()
